@@ -1,7 +1,7 @@
 export const router_path = {
   index: "/",
   home: "/home",
-  about: "/aboutcyc",
+  about: "/about",
   underground: "/underground",
   boan: "/boan",
   signup: "/signup",

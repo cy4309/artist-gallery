@@ -31,7 +31,21 @@ const Nav = () => {
         <Icon path={mdiCloudOutline} size={1} className="mr-2" />
         <h1>Cloud 3D Service</h1>
       </div>
-      <div className="flex">
+      <ul className="flex">
+        <li
+          className="mx-4 cursor-pointer"
+          onClick={() => navigate("/underground")}
+        >
+          un
+        </li>
+        <li className="mx-4 cursor-pointer" onClick={() => navigate("/boan")}>
+          ar
+        </li>
+        <li className="mx-4 cursor-pointer" onClick={() => navigate("/about")}>
+          ab
+        </li>
+      </ul>
+      <div className="flex justify-center items-center">
         <p className="text-sm mr-4 flex items-center">V0.0.1</p>
         <BaseButton
           className="mr-2 hover:bg-hoverGray"

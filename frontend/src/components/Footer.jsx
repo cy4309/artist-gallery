@@ -3,7 +3,7 @@ const Footer = () => {
     <>
       <footer className="w-full">
         <p className="text-center text-sm">
-          © 2022 CYC Entertainment. All rights reserved
+          {/* © 2022 CYC Entertainment. All rights reserved */}
         </p>
       </footer>
     </>
