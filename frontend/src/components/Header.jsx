@@ -1,5 +1,6 @@
 import Icon from "@mdi/react";
-import { mdiCloudOutline, mdiThemeLightDark } from "@mdi/js";
+// import cycLogo from "/cyc-logo.png";
+import { mdiThemeLightDark } from "@mdi/js";
 import BaseButton from "@/components/BaseButton";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "@/stores/features/styleSlice";
@@ -28,25 +29,25 @@ const Nav = () => {
   return (
     <nav className="container py-4 flex justify-between items-center">
       <div className="flex cursor-pointer" onClick={() => navigate("/")}>
-        <Icon path={mdiCloudOutline} size={1} className="mr-2" />
-        <h1>Cloud 3D Service</h1>
+        {/* <img src={cycLogo} alt="cyc-logo" className="h-8" /> */}
+        <h1>C</h1>
       </div>
       <ul className="flex">
+        <li className="mx-4 cursor-pointer" onClick={() => navigate("/events")}>
+          ev
+        </li>
         <li
           className="mx-4 cursor-pointer"
-          onClick={() => navigate("/underground")}
+          onClick={() => navigate("/interviews")}
         >
-          un
-        </li>
-        <li className="mx-4 cursor-pointer" onClick={() => navigate("/boan")}>
-          ar
+          in
         </li>
         <li className="mx-4 cursor-pointer" onClick={() => navigate("/about")}>
           ab
         </li>
       </ul>
       <div className="flex justify-center items-center">
-        <p className="text-sm mr-4 flex items-center">V0.0.1</p>
+        {/* <p className="text-sm mr-4 flex items-center">V0.0.1</p> */}
         <BaseButton
           className="mr-2 hover:bg-hoverGray"
           onClick={() => dispatch(toggleDarkMode())}

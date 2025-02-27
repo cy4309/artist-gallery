@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const BaseButton = ({ label, className, onClick, children }) => {
   return (
     <button
-      className={`cursor-pointer inline-flex justify-center items-center transition-colors duration-150 border py-2 px-6 ${className}`}
+      className={`py-2 px-6 cursor-pointer inline-flex justify-center items-center border transition-colors duration-150 ${className}`}
       onClick={onClick}
     >
       {/* {label || children} */}

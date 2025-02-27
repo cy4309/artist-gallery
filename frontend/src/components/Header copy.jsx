@@ -1,46 +1,16 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CycLogo from "@/assets/images/CYC_Logo-1.png";
 import BoanEyes from "@/assets/images/boansEyes.jpg";
 import wenChiasEyes from "@/assets/images/wenChiasEyes.jpg";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { toggleDarkMode } from '@/features/styleSlice.js';
 
 const Header = () => {
-  // const navigate = useNavigate();
-  // const handleNavigate = () => {
-  //   navigate('/aboutcyc');
-  // };
-
-  const openNav = (num) => {
-    if (num === 0) {
-      document.getElementsByClassName("sideNav")[0].style.height = "100%";
-    }
-    if (num === 1) {
-      document.getElementsByClassName("sideNav")[1].style.height = "100%";
-    }
-    document.querySelector("body").style.marginTop = "300vh";
-    document.querySelector("body").style.overflow = "hidden";
-    document.querySelector("body").style.transition = "1.5s";
-  };
-
-  const closeNav = (num) => {
-    if (num === 0) {
-      document.getElementsByClassName("sideNav")[0].style.height = "0";
-    }
-    if (num === 1) {
-      document.getElementsByClassName("sideNav")[1].style.height = "0";
-    }
-    document.querySelector("body").style.marginTop = "0";
-    document.querySelector("body").style.overflow = "auto";
-    document.querySelector("body").style.transition = ".5s";
-  };
+  const [activeNav, setActiveNav] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        closeNav(0);
-        closeNav(1);
+        setActiveNav(null);
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -52,198 +22,129 @@ const Header = () => {
   return (
     <>
       {/* banner-bar */}
-      <div className="container-fluid">
-        <div id="banner-bar" className="row">
-          <div id="blank" className="col-3"></div>
-          <div className="col-6 announcement">
-            <div className="announcement__content">
-              <p className="announcement__content__text">Hello ,</p>
-              <ul className="announcement__content__list">
-                <li className="announcement__content__list__item">are you ready for a cultural adventure?</li>
-                <li className="announcement__content__list__item">Please wear a mask when you visiting cultural events.</li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-3 text-right">
-            <button id="instagramBtn" className="m-2 btn btn">
-              <font-awesome-icon icon="fa-brands fa-instagram" />
-            </button>
-            <button id="youtubeBtn" className="m-2 btn btn">
-              <font-awesome-icon icon="fa-brands fa-youtube" />
-            </button>
-            <button id="i18nBtn" className="m-2 btn btn">
-              中
-            </button>
-          </div>
+      <div className="w-full bg-gray-800 text-white py-2 flex justify-between px-4">
+        <div className="hidden md:block">&nbsp;</div>
+        <div className="text-center flex-1">
+          <p className="text-sm">
+            Hello, Are you ready for a cultural adventure?
+          </p>
+        </div>
+        <div className="flex space-x-2">
+          <button className="btn">IG</button>
+          <button className="btn">YT</button>
+          <button className="btn">中</button>
         </div>
       </div>
+
       {/* header */}
-      <header className="container-fluid">
-        <div id="logo" className="col-4">
+      <header className="w-full flex justify-between items-center px-4 py-3 shadow-md">
+        <div className="w-1/4">
           <Link to="/">
-            <img id="logoImg" src={CycLogo} alt="CYC_Entertainment_Studio" />
+            <img
+              src={CycLogo}
+              alt="CYC_Entertainment_Studio"
+              className="w-32"
+            />
           </Link>
         </div>
-        <nav id="menu" className="col-4">
-          <ul>
-            <li className="d-flex align-items-center">
-              <div className="mr-2">Special Column</div>
-              <div className="sideNav row">
-                <a
-                  href="#"
-                  className="closebtn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(0);
-                  }}
-                >
-                  &times;
-                </a>
-                <Link
-                  to="/boan"
-                  id="boansEyes"
-                  className="col-12"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(0);
-                  }}
-                >
-                  <p className="hideText">BOAN</p>
-                  <img src={BoanEyes} alt="" />
-                </Link>
-                <a
-                  href="#"
-                  id="wenChiasEyes"
-                  className="col-12"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(0);
-                  }}
-                >
-                  <p className="hideText">WENCHIA</p>
-                  <img src={wenChiasEyes} alt="" />
-                </a>
-                <a
-                  href="#"
-                  className="col-12"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(0);
-                  }}
-                ></a>
-                <a
-                  href="#"
-                  className="col-12"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(0);
-                  }}
-                ></a>
-              </div>
-              <div id="sideNavOpen">
-                <a
-                  className="nav-arrow"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openNav(0);
-                  }}
-                ></a>
-              </div>
-            </li>
-            <li className="d-flex align-items-center">
-              <div className="mr-2">Explore Culture</div>
-              <div className="sideNav row">
-                <a
-                  href="#"
-                  className="closebtn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  &times;
-                </a>
-                <Link
-                  to="/underground"
-                  className="col-3"
-                  style={{ border: "3px solid #fff" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  underground
-                </Link>
-                <a
-                  href="#"
-                  className="col-3"
-                  style={{ border: "3px solid #fff" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  traditional
-                </a>
-                <a
-                  href="#"
-                  className="col-3"
-                  style={{ border: "3px solid #fff" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  indigenous
-                </a>
-                <a
-                  href="#"
-                  className="col-3"
-                  style={{ border: "3px solid #fff" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  western
-                </a>
-              </div>
-              <div id="sideNavOpen">
-                <a
-                  className="nav-arrow"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openNav(1);
-                  }}
-                ></a>
-              </div>
-            </li>
-            <li className="d-flex align-items-center">
-              <div className="mr-2">
-                <Link
-                  to="/aboutcyc"
-                  className="col-3"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeNav(1);
-                  }}
-                >
-                  <button className="loginBtn btn btn-link">About</button>
-                </Link>
-              </div>
-            </li>
-          </ul>
+
+        <nav className="flex space-x-6">
+          {/* Special Column */}
+          <div className="relative">
+            <button className="text-lg" onClick={() => setActiveNav("special")}>
+              Special Column
+            </button>
+            <div
+              className={`absolute top-full left-0 bg-white shadow-md w-48 p-2 rounded-md transition-all duration-300 ${
+                activeNav === "special" ? "block" : "hidden"
+              }`}
+            >
+              <button
+                className="absolute top-1 right-2 text-xl"
+                onClick={() => setActiveNav(null)}
+              >
+                &times;
+              </button>
+              <Link
+                to="/boan"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                <p className="text-sm">BOAN</p>
+                <img src={BoanEyes} alt="Boan" className="w-full" />
+              </Link>
+              <Link
+                to="/wenchia"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                <p className="text-sm">WENCHIA</p>
+                <img src={wenChiasEyes} alt="Wenchia" className="w-full" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Explore Culture */}
+          <div className="relative">
+            <button className="text-lg" onClick={() => setActiveNav("explore")}>
+              Explore Culture
+            </button>
+            <div
+              className={`absolute top-full left-0 bg-white shadow-md w-48 p-2 rounded-md transition-all duration-300 ${
+                activeNav === "explore" ? "block" : "hidden"
+              }`}
+            >
+              <button
+                className="absolute top-1 right-2 text-xl"
+                onClick={() => setActiveNav(null)}
+              >
+                &times;
+              </button>
+              <Link
+                to="/underground"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                Underground
+              </Link>
+              <Link
+                to="/traditional"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                Traditional
+              </Link>
+              <Link
+                to="/indigenous"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                Indigenous
+              </Link>
+              <Link
+                to="/western"
+                className="block py-2"
+                onClick={() => setActiveNav(null)}
+              >
+                Western
+              </Link>
+            </div>
+          </div>
+
+          {/* About */}
+          <Link to="/aboutcyc" className="text-lg">
+            About
+          </Link>
         </nav>
-        <div id="loginArea" className="col-4 text-right">
+
+        <div className="space-x-2">
           <Link to="/login">
-            <button className="loginBtn btn btn-link">Log in</button>
+            <button className="px-4 py-2 border border-gray-400 rounded-md">
+              Log in
+            </button>
           </Link>
           <Link to="/signup">
-            <button className="signupBtn btn btn">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+            <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
               Sign up
             </button>
           </Link>

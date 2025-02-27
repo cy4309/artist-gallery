@@ -23,9 +23,8 @@ import "@/assets/styles/app.css";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
-const Underground = lazy(() => import("@/pages/Underground"));
-const Boan = lazy(() => import("@/pages/Boan"));
-const Signup = lazy(() => import("@/pages/Signup"));
+const Events = lazy(() => import("@/pages/Events"));
+const Interviews = lazy(() => import("@/pages/Interviews"));
 const Error = lazy(() => import("@/pages/Error"));
 
 const App = () => {
@@ -60,28 +59,20 @@ const App = () => {
             }
           />
           <Route
-            path={router_path.underground}
+            path={router_path.events}
             element={
               // <ProtectedRoute>
               <Suspense fallback={<LoadingIndicator />}>
-                <Underground />
+                <Events />
               </Suspense>
               // </ProtectedRoute>
             }
           />
           <Route
-            path={router_path.boan}
+            path={router_path.interviews}
             element={
               <Suspense fallback={<LoadingIndicator />}>
-                <Boan />
-              </Suspense>
-            }
-          />
-          <Route
-            path={router_path.signup}
-            element={
-              <Suspense fallback={<LoadingIndicator />}>
-                <Signup />
+                <Interviews />
               </Suspense>
             }
           />

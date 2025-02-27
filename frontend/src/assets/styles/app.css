@@ -1,12 +1,7 @@
 body {
-  width: 100vw;
   font-family: sans-serif;
   font-weight: 700;
   /* color: #374151; */
-}
-
-#root {
-  width: 100%;
 }
 
 .loader {

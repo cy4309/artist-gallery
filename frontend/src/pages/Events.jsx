@@ -1,13 +1,30 @@
-const Underground = () => {
+import { useEffect, useState } from "react";
+import { getOrgData } from "@/services/orgDataService";
+
+const Events = () => {
+  const [orgData, setOrgData] = useState([]);
+  console.log(orgData);
+
+  useEffect(() => {
+    fetchOrgData();
+  }, []);
+
+  const fetchOrgData = async () => {
+    try {
+      const response = await getOrgData();
+      setOrgData(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      {/* <!-- underground main --> */}
-      {/* <!-- 藝文資料 --> */}
-      {/* <!-- <div className="row">
-      <pre style="color: #fff">
-        {{ data }}
-      </pre>
-    </div> --> */}
+      {/* {orgData.map((event) => (
+        <section key={event.UID + event.category}>
+          <span>title: {event.title}</span>
+        </section>
+      ))} */}
       <main className="container px-4 px-lg-5">
         {/* <!-- Heading Row--> */}
         <div className="row gx-4 gx-lg-5 align-items-center my-5">
@@ -162,4 +179,4 @@ const Underground = () => {
   );
 };
 
-export default Underground;
+export default Events;
