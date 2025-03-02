@@ -27,3 +27,18 @@ body {
     transform: translateY(-100%)
   }
 }
+
+path {
+  stroke: black;
+  fill: transparent;
+  transition: 0.5s
+}
+
+path:hover {
+  fill: #B99362;
+  transfrom: translate(-5px, -5px);
+}
+
+.dark path {
+  stroke: white;
+}
