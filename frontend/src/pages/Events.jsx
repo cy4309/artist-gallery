@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { getOrgData } from "@/services/orgDataService";
 import MapTw from "@/containers/evnets/MapTw";
-import mapTwJson from "@/containers/evnets/mapTw.json";
+import { Card } from "antd";
 
 const Events = () => {
+  const { Meta } = Card;
   const [hoveredId, setHoveredId] = useState(null);
+  const [clickedId, setClickedId] = useState(null);
   const [orgData, setOrgData] = useState([]);
-  console.log(orgData);
-  const now_data = mapTwJson.find((data) => data.tag === hoveredId);
+  const now_data = orgData.filter((data) => data.cityName.includes(clickedId));
 
   useEffect(() => {
     fetchOrgData();
@@ -22,29 +23,34 @@ const Events = () => {
     }
   };
 
-  const handleHover = (id) => {
+  const handleMapHover = (id) => {
     setHoveredId(id);
+  };
+
+  const handleMapClick = (id) => {
+    setClickedId(id);
   };
 
   return (
     <>
       <div className="container flex justify-center items-center">
-        <MapTw onHover={handleHover} />
-
+        <MapTw onHover={handleMapHover} onClick={handleMapClick} />
         <div className="w-1/3">
-          <h1>Taiwan ///</h1>
-          <div className="forcast">
-            {hoveredId && <h5>{hoveredId}</h5>}
-            {now_data && (
-              <>
-                <h4>
-                  {now_data.low}~{now_data.high}
-                </h4>
-                <h2>{now_data.weather}</h2>
-              </>
-            )}
-          </div>
+          <div className="forcast">{hoveredId && <h5>{hoveredId}</h5>}</div>
         </div>
+      </div>
+      <div className="container mt-4">
+        {now_data.length > 0 ? (
+          now_data.map((data) => (
+            <Card key={data.actId} hoverable>
+              <Meta title={data.actName} description={data.description} />
+              <p>{data.address}</p>
+              <p>{data.endTime}</p>
+            </Card>
+          ))
+        ) : (
+          <p>No events found for the selected city.</p>
+        )}
       </div>
     </>
   );

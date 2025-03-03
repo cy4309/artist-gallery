@@ -1,6 +1,5 @@
-import Icon from "@mdi/react";
 // import cycLogo from "/cyc-logo.png";
-import { mdiThemeLightDark } from "@mdi/js";
+import { SunOutlined } from "@ant-design/icons";
 import BaseButton from "@/components/BaseButton";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "@/stores/features/styleSlice";
@@ -52,7 +51,7 @@ const Nav = () => {
           className="mr-2 hover:bg-hoverGray"
           onClick={() => dispatch(toggleDarkMode())}
         >
-          <Icon path={mdiThemeLightDark} size={1} />
+          <SunOutlined />
         </BaseButton>
         {/* <BaseButton
           label={isAuthenticated ? "Log Out" : "Log In"}

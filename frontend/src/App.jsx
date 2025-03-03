@@ -5,6 +5,7 @@ import { router_path } from "@/routers";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import MainLayout from "@/layouts/MainLayout";
 import "@/assets/styles/app.css";
+import { ConfigProvider, theme } from "antd";
 
 // const ProtectedRoute = ({ children }) => {
 //   const navigate = useNavigate();
@@ -40,45 +41,51 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route
-            path={router_path.index}
-            element={
-              <Suspense fallback={<LoadingIndicator />}>
-                <Home />
-              </Suspense>
-            }
-          />
-          <Route
-            path={router_path.about}
-            element={
-              <Suspense fallback={<LoadingIndicator />}>
-                <About />
-              </Suspense>
-            }
-          />
-          <Route
-            path={router_path.events}
-            element={
-              // <ProtectedRoute>
-              <Suspense fallback={<LoadingIndicator />}>
-                <Events />
-              </Suspense>
-              // </ProtectedRoute>
-            }
-          />
-          <Route
-            path={router_path.interviews}
-            element={
-              <Suspense fallback={<LoadingIndicator />}>
-                <Interviews />
-              </Suspense>
-            }
-          />
-          <Route path={router_path.error} element={<Error />} />
-        </Route>
-      </Routes>
+      <ConfigProvider
+        theme={{
+          algorithm: theme[isDarkMode ? "darkAlgorithm" : "defaultAlgorithm"], //antd 5.0.0的寫法，而不是4.0.0的mode:"dark"寫法
+        }}
+      >
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route
+              path={router_path.index}
+              element={
+                <Suspense fallback={<LoadingIndicator />}>
+                  <Home />
+                </Suspense>
+              }
+            />
+            <Route
+              path={router_path.about}
+              element={
+                <Suspense fallback={<LoadingIndicator />}>
+                  <About />
+                </Suspense>
+              }
+            />
+            <Route
+              path={router_path.events}
+              element={
+                // <ProtectedRoute>
+                <Suspense fallback={<LoadingIndicator />}>
+                  <Events />
+                </Suspense>
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path={router_path.interviews}
+              element={
+                <Suspense fallback={<LoadingIndicator />}>
+                  <Interviews />
+                </Suspense>
+              }
+            />
+            <Route path={router_path.error} element={<Error />} />
+          </Route>
+        </Routes>
+      </ConfigProvider>
     </BrowserRouter>
   );
 };
