@@ -35,9 +35,7 @@ const Events = () => {
     <>
       <div className="container flex justify-center items-center">
         <MapTw onHover={handleMapHover} onClick={handleMapClick} />
-        <div className="w-1/3">
-          <div className="forcast">{hoveredId && <h5>{hoveredId}</h5>}</div>
-        </div>
+        <div className="forcast">{hoveredId && <h5>{hoveredId}</h5>}</div>
       </div>
       <div className="container mt-4">
         {now_data.length > 0 ? (
@@ -49,7 +47,7 @@ const Events = () => {
             </Card>
           ))
         ) : (
-          <p>No events found for the selected city.</p>
+          <p className="text-center">No events found for the selected city.</p>
         )}
       </div>
     </>

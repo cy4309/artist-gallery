@@ -26,7 +26,7 @@ const Nav = () => {
   // };
 
   return (
-    <nav className="container py-4 flex justify-between items-center">
+    <nav className="container p-4 flex justify-between items-center">
       <div className="flex cursor-pointer" onClick={() => navigate("/")}>
         {/* <img src={cycLogo} alt="cyc-logo" className="h-8" /> */}
         <h1>C</h1>
@@ -48,7 +48,7 @@ const Nav = () => {
       <div className="flex justify-center items-center">
         {/* <p className="text-sm mr-4 flex items-center">V0.0.1</p> */}
         <BaseButton
-          className="mr-2 hover:bg-hoverGray"
+          className="hover:bg-hoverGray"
           onClick={() => dispatch(toggleDarkMode())}
         >
           <SunOutlined />
